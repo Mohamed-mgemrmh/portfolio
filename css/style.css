@@ -1031,7 +1031,7 @@ br.none {
 #contact .contact-text-container {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
   height: 300px;
   max-width: 90vw;
 }
@@ -1044,7 +1044,6 @@ br.none {
 #contact .contact-text-container .contact-text p {
   color: #777;
   font-size: 20px;
-  /* margin-bottom: 15px; */
   line-height: 1.4;
 }
 #contact .contact-text-container .contact-text p a {
@@ -1054,7 +1053,7 @@ br.none {
 hr.seprate {
   width: 50%;
   border-color: var(--main-color);
-  margin: 30px 0;
+  margin: 10px 0;
 }
 
 @media (max-width: 767px) {
@@ -1073,6 +1072,21 @@ hr.seprate {
         display: none;
     }
 }
+
+footer {
+  width: 100vw;
+  background-color: var(--main-color);
+  color: white;
+  font-weight: bold;
+  font-size: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0;
+}
+
+
+
 /* button styles  */
 .button {
   --primary: #057fbd;
