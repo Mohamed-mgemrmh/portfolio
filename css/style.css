@@ -138,7 +138,7 @@ img {
   margin-bottom: 10px;
 }
 #home .text-container .main-text {
-  font-size: 70px;
+  font-size: 60px;
   margin-bottom: 10px;
 }
 br.none {
@@ -149,7 +149,7 @@ br.none {
   -webkit-text-stroke: 2px var(--main-color);
 }
 #home .text-container .secondry-text {
-  font-size: 40px;
+  font-size: 35px;
   margin-bottom: 10px;
 }
 #home .text-container .buttons {
