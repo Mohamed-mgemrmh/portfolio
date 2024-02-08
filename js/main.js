@@ -1,11 +1,10 @@
-
-// mobile menu 
+// mobile menu
 const menuIcon = document.querySelector(".mobile");
 const menuBtnOne = document.querySelector(".mobile .first");
 const menuBtnTwo = document.querySelector(".mobile .second");
 const menuBtnThree = document.querySelector(".mobile .third");
 const mobileMenu = document.querySelector(".down-menu");
-const menuLinks = mobileMenu.querySelectorAll('.down-menu-ul .link a')
+const menuLinks = mobileMenu.querySelectorAll(".down-menu-ul .link a");
 menuIcon.onclick = () => {
   menuBtnOne.classList.toggle("first-x-class");
   menuBtnTwo.classList.toggle("second-x-class");
@@ -18,16 +17,16 @@ menuLinks.forEach((link) => {
     menuBtnTwo.classList.toggle("second-x-class");
     menuBtnThree.classList.toggle("third-x-class");
     mobileMenu.classList.toggle("open");
-  }
-})
-// contact menu 
+  };
+});
+// contact menu
 const toggle = document.querySelector(".toggle");
 const menu = document.querySelector(".menu");
 toggle.onclick = () => {
   menu.classList.toggle("active");
 };
 
-// skills section 
+// skills section
 
 const skillsBoxes = document.querySelectorAll(".field-boxes .box");
 
@@ -134,7 +133,7 @@ design.addEventListener("click", () => {
   fourthProgressProg.style.width = "85%";
 });
 
-// reviews section 
+// reviews section
 var swiper = new Swiper(".slide-content", {
   slidesPerView: 3,
   spaceBetween: 25,
@@ -165,7 +164,7 @@ var swiper = new Swiper(".slide-content", {
   },
 });
 
-// contact section 
+// contact section
 
 const icon = document.querySelector(".icon");
 const path = document.querySelector("path");
@@ -191,3 +190,54 @@ function addClassOnScroll() {
 
 window.addEventListener("scroll", addClassOnScroll);
 window.addEventListener("load", addClassOnScroll);
+// mouse tracker
+console.clear();
+
+const circleElement = document.querySelector(".circle");
+
+const mouse = { x: 0, y: 0 };
+const previousMouse = { x: 0, y: 0 };
+const circle = { x: 0, y: 0 };
+
+let currentScale = 0;
+let currentAngle = 0;
+
+window.addEventListener("mousemove", (e) => {
+  mouse.x = e.x;
+  mouse.y = e.y;
+});
+const mouseCircle = document.querySelector(".circle .pointer");
+document.addEventListener("mousedown", () =>
+  mouseCircle.classList.add("active")
+);
+document.addEventListener("mouseup", () =>
+  mouseCircle.classList.remove("active")
+);
+
+const speed = 1;
+
+const tick = () => {
+  circle.x += (mouse.x - circle.x) * speed;
+  circle.y += (mouse.y - circle.y) * speed;
+  const translateTransform = `translate(${circle.x}px, ${circle.y}px)`;
+  const deltaMouseX = mouse.x - previousMouse.x;
+  const deltaMouseY = mouse.y - previousMouse.y;
+  previousMouse.x = mouse.x;
+  previousMouse.y = mouse.y;
+  const mouseVelocity = Math.min(
+    Math.sqrt(deltaMouseX ** 2 + deltaMouseY ** 2) * 4,
+    150
+  );
+  const scaleValue = (mouseVelocity / 150) * 0.5;
+  currentScale += (scaleValue - currentScale) * speed;
+  const scaleTransform = `scale(${1 + currentScale}, ${1 - currentScale})`;
+  const angle = (Math.atan2(deltaMouseY, deltaMouseX) * 180) / Math.PI;
+  if (mouseVelocity > 20) {
+    currentAngle = angle;
+  }
+  const rotateTransform = `rotate(${currentAngle}deg)`;
+  circleElement.style.transform = `${translateTransform} ${rotateTransform} ${scaleTransform}`;
+  window.requestAnimationFrame(tick);
+};
+
+tick();
