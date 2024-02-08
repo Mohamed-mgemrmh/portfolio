@@ -6,6 +6,9 @@
   background-color: var(--main-color);
   color: var(--secondry-color);
 }
+body {
+  cursor: none;
+}
 * {
   margin: 0;
   padding: 0;
@@ -14,6 +17,37 @@
 }
 html {
   scroll-behavior: smooth;
+}
+.circle {
+  --circle-size: 40px;
+  position: fixed;
+  height: var(--circle-size);
+  width: var(--circle-size);
+  border: 1px solid var(--main-color);
+  border-radius: 100%;
+  top: calc(var(--circle-size) / 2 * -1);
+  left: calc(var(--circle-size) / 2 * -1);
+  pointer-events: none;
+  z-index: 10000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.circle .pointer {
+  width: 30%;
+  height: 30%;
+  border-radius: 50%;
+  background-color: var(--main-color);
+  transition: .1s;
+}
+.circle .pointer.active {
+  width: 50%;
+  height: 50%;
+}
+@media (max-width:768px) {
+  .circle {
+    display: none;
+  }
 }
 li {
   list-style: none;
@@ -78,7 +112,7 @@ header nav .mobile .third-x-class {
 nav .logo {
   font-family: cursive;
   color: var(--main-color);
-  cursor: pointer;
+  /* cursor: pointer; */
 }
 nav ul {
   display: flex;
@@ -138,7 +172,7 @@ img {
   margin-bottom: 10px;
 }
 #home .text-container .main-text {
-  font-size: 60px;
+  font-size: 70px;
   margin-bottom: 10px;
 }
 br.none {
@@ -149,7 +183,7 @@ br.none {
   -webkit-text-stroke: 2px var(--main-color);
 }
 #home .text-container .secondry-text {
-  font-size: 35px;
+  font-size: 40px;
   margin-bottom: 10px;
 }
 #home .text-container .buttons {
@@ -160,7 +194,7 @@ br.none {
   border: 1px solid var(--main-color);
   padding: 9px 15px;
   margin: 5px;
-  cursor: pointer;
+  /* cursor: pointer; */
   transition: 0.3s;
   color: white;
 }
@@ -190,7 +224,7 @@ br.none {
   box-shadow: 0 3px 4px rgba(0, 0, 0, 0.15);
   color: var(--main-color);
   font-size: 35px;
-  cursor: pointer;
+  /* cursor: pointer; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -288,7 +322,7 @@ br.none {
   border-bottom: 2px solid white;
   position: relative;
   transition: 0.5s;
-  cursor: pointer;
+  /* cursor: pointer; */
   font-weight: bold;
 }
 .sections-main-text:hover {
@@ -358,7 +392,7 @@ br.none {
   margin-bottom: 10px;
   width: fit-content;
   position: relative;
-  cursor: default;
+  /* cursor: default; */
 }
 
 #about .content .about-container h2::before {
@@ -420,7 +454,7 @@ br.none {
   border-radius: 15px;
   color: var(--main-color);
   transition: 0.4s;
-  cursor: pointer;
+  /* cursor: pointer; */
   backdrop-filter: blur(5px);
   text-align: center;
 }
@@ -688,7 +722,7 @@ br.none {
   border-radius: 15px;
   color: var(--main-color);
   border: 2px solid var(--main-color);
-  cursor: default;
+  /* cursor: default; */
 }
 #portfolio .projects-container .project .project-heading {
   width: calc(100% - 10px);
@@ -980,22 +1014,25 @@ br.none {
   width: calc(100% - 30px);
   transition: 0.2s;
   z-index: 2;
+  cursor: none;
 }
 #contact .container .contact-form .label-area .placeholder {
   font-size: 0.8em;
-  transition: 0.2s;
+  transition: 0.3s;
   padding: 2px 10px;
   margin-left: 15px;
   z-index: -1;
   position: absolute;
   top: 14px;
   color: #888;
+  user-select: none;
+  pointer-events: none;
 }
 #contact .container .contact-form .input:focus {
   outline: none;
 }
 #contact .container .contact-form .input:focus + .placeholder,
-#contact .container .contact-form .input:placeholder-shown + .placeholder {
+#contact .container .contact-form .input:not(:placeholder-shown) + .placeholder {
   color: var(--main-color);
   background-color: var(--secondry-color);
   z-index: 2;
@@ -1132,7 +1169,7 @@ footer {
   --right-body-third-x: 100;
   --right-body-third-y: 100;
   display: block;
-  cursor: pointer;
+  /* cursor: pointer; */
   position: relative;
   border: 0;
   padding: 8px 0;
