@@ -74,7 +74,7 @@ frontend.addEventListener("click", () => {
   thirdProgresspercntg.innerHTML = "95%";
   thirdProgressProg.style.width = "95%";
 
-  fourthProgressText.innerHTML = "PHP";
+  fourthProgressText.innerHTML = "Python";
   fourthProgresspercntg.innerHTML = "70%";
   fourthProgressProg.style.width = "70%";
 });
@@ -241,3 +241,4 @@ const tick = () => {
 };
 
 tick();
+
